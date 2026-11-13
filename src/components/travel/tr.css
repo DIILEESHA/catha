@@ -1,0 +1,405 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&display=swap");
+
+.travel {
+  --cream: #f7f5ef;
+  --card: #fbfaf5;
+  --green: #213b31;
+  --ink: #0d1713;
+  --gold: #b08d57;
+  --brown: #8a6a2f;
+  --rose: #e8c9c4;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Inter", Arial, sans-serif;
+  font-family: var(--serif);
+  background: var(--cream);
+  color: var(--green);
+}
+.travel * {
+  box-sizing: border-box;
+}
+
+.tr-eyebrow {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+}
+.tr-eyebrow--gold {
+  color: var(--gold);
+}
+.tr-eyebrow--brown {
+  color: var(--brown);
+}
+
+.tr-btn {
+  display: inline-block;
+  padding: 18px 28px;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.tr-btn--dark {
+  background: var(--green);
+  color: #f5f1e8;
+}
+.tr-btn:hover {
+  opacity: 0.85;
+}
+
+/* ================= NAV ================= */
+.tr-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 64px;
+  padding: 0 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--green);
+}
+.tr-nav-logo {
+  color: var(--gold);
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+.tr-nav-links {
+  display: flex;
+  gap: 34px;
+}
+.tr-nav-links a {
+  padding-bottom: 4px;
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  color: #f5f1e8;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease;
+}
+.tr-nav-links a:hover,
+.tr-nav-links a.is-active {
+  color: var(--gold);
+}
+.tr-nav-links a.is-active {
+  border-bottom-color: var(--gold);
+}
+
+/* ================= HERO ================= */
+.tr-hero {
+  position: relative;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  overflow: hidden;
+}
+.tr-hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 */
+  min-width: 177.78vh;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+.tr-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+}
+.tr-hero-title {
+  margin: 22px 0 30px;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  font-weight: 400;
+  color: #f5f1e8;
+}
+.tr-pause {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  z-index: 3;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #f5f1e8;
+  border: 1px solid rgba(245, 241, 232, 0.7);
+  font-family: var(--sans);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+}
+.tr-pause:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ================= HOTEL INTRO ================= */
+.tr-hotel {
+  padding: 100px 24px;
+  background: var(--cream);
+}
+.tr-hotel-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+.tr-hotel-title {
+  margin: 20px 0 22px;
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+.tr-hotel-title em {
+  font-weight: 300;
+}
+.tr-hotel-loc {
+  margin: 0 0 20px;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+}
+.tr-hotel-desc {
+  margin: 0 0 24px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+.tr-hotel-addr {
+  margin: 0 0 6px;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  color: var(--ink);
+}
+.tr-hotel-link {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  color: var(--ink);
+  text-decoration: underline;
+}
+.tr-hotel-img img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* ================= BOOKING ================= */
+.tr-booking {
+  position: relative;
+  padding: 90px 24px 80px;
+  background-color: #fde9c2;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+.tr-booking-line {
+  position: absolute;
+  left: 160px;
+  right: 160px;
+  height: 1px;
+  background: rgba(176, 141, 87, 0.4);
+}
+.tr-booking-line--top {
+  top: 12px;
+}
+.tr-booking-line--bottom {
+  bottom: 12px;
+}
+.tr-booking-inner {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.tr-booking-title {
+  margin: 20px 0 20px;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--brown);
+}
+.tr-booking-title em {
+  font-weight: 300;
+}
+.tr-booking-desc {
+  margin: 0 auto 28px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.tr-code-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.tr-code {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+.tr-copy {
+  padding: 9px 12px;
+  background: transparent;
+  border: 1px solid var(--brown);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+}
+.tr-copy:hover {
+  background: var(--brown);
+  color: #fff;
+}
+
+/* ================= ROOMS ================= */
+.tr-rooms {
+  max-width: 1130px;
+  margin: 0 auto;
+  padding: 80px 24px 110px;
+  text-align: center;
+}
+.tr-rooms-title {
+  margin: 18px 0 50px;
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  font-weight: 400;
+}
+.tr-rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  text-align: left;
+}
+.tr-room {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--rose);
+}
+.tr-room-img {
+  position: relative;
+  height: 190px;
+  background: transparent;
+}
+.tr-room-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tr-room-tag {
+  position: absolute;
+  left: 14px;
+  bottom: -18px;
+  padding: 10px 14px;
+  background: var(--green);
+  color: #f5f1e8;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.tr-room-body {
+  padding: 40px 22px 26px;
+}
+.tr-room-meta {
+  margin: 0 0 12px;
+  font-family: var(--sans);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  color: #c27a52;
+}
+.tr-room-name {
+  margin: 0 0 10px;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+.tr-room-beds {
+  margin: 0 0 18px;
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  color: var(--brown);
+}
+.tr-room-desc {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+/* ================= FOOTER ================= */
+.tr-footer {
+  background: var(--green);
+  padding: 40px 20px 32px;
+  text-align: center;
+}
+.tr-footer-mono {
+  margin: 0 0 12px;
+  font-size: 1.8rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+.tr-footer-text {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .tr-nav {
+   display: flex!important;
+    flex-direction: column!important;
+    padding:10px 0;
+    height: auto;
+  }
+  .tr-nav-links a {
+   font-size: 6px;
+
+    margin: 0;
+  }
+
+  tr-nav-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+  }
+  .tr-hotel-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .tr-rooms-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .tr-booking-line {
+    left: 24px;
+    right: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tr-hero {
+    height: 380px;
+  }
+  .tr-rooms-grid {
+    grid-template-columns: 1fr;
+  }
+  .tr-hotel {
+    padding: 60px 20px;
+  }
+}

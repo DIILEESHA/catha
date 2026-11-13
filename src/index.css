@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "com";
+  src: url("../public/fonts/cormorant.ttf");
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), local("Segoe UI"), local("Helvetica Neue");
+  font-optical-sizing: auto;
+}
+
+:root {
+  --green: #233d32;
+  --gold: #baa071;
+  --blush: #eddbd6;
+  --cream: #f6f3eb;
+}
+
+
+
+@media (max-width: 900px) {
+  .it-nav {
+    display: flex!important;
+    flex-direction: column!important;
+    padding:10px 0;
+    height: auto;
+  }
+  .it-nav-links a {
+    /* display: none; */
+    font-size: 6px;
+
+    margin: 0;
+  }
+
+  .it-nav-links {
+    display: flex;
+    margin-top: 10px;
+    gap: 20px;
+  }
+  .it-hero-frame {
+    grid-template-columns: 1fr;
+    padding: 40px 24px 50px;
+    display: flex!important;
+    flex-direction: column!important;
+  }
+  .it-feature,
+  .it-ideas,
+  .it-venue-row {
+    grid-template-columns: 1fr 1fr;
+        display: flex;
+    flex-direction: column;
+     display: flex!important;
+    flex-direction: column!important;
+  }
+  .it-fiesta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px 34px;
+     display: flex!important;
+    flex-direction: column!important;
+  }
+  .it-head {
+    gap: 14px;
+  }
+  .it-head-text {
+    padding-left: 14px;
+  }
+}

@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500&display=swap");
+
+.faqs {
+  --green: #223e33;
+  --pink: #ecdad3;
+  --cream: #f4f3ea;
+  --open: #eaebdd;
+  --line: #d7c9ad;
+  --gold: #b08d57;
+  --brown: #8a6a2f;
+  --ink: #223a2e;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Inter", Arial, sans-serif;
+  font-family: var(--serif);
+  color: var(--ink);
+  background: var(--cream);
+}
+.faqs * {
+  box-sizing: border-box;
+}
+.faqs p {
+  margin: 0;
+}
+
+/* ================= NAV ================= */
+.fq-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 76px;
+  padding: 0 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--green);
+}
+.fq-nav-logo {
+  color: var(--gold);
+  font-size: 1.9rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+.fq-nav-links {
+  display: flex;
+  gap: 30px;
+}
+.fq-nav-links a {
+  padding-bottom: 4px;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: #f5f1e8;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease;
+}
+.fq-nav-links a:hover,
+.fq-nav-links a.is-active {
+  color: var(--gold);
+}
+.fq-nav-links a.is-active {
+  border-bottom-color: var(--gold);
+}
+
+/* ================= HERO ================= */
+.fq-hero {
+  padding: 16px;
+  background: var(--pink);
+}
+.fq-hero-frame {
+  min-height: 296px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  border: 1px solid var(--gold);
+}
+.fq-hero-title {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--green);
+}
+
+/* ================= ACCORDION ================= */
+.fq-list-wrap {
+  padding: 56px 20px 80px;
+}
+.fq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+}
+
+.fq-item {
+  border-bottom: 1px solid var(--line);
+  transition: background 0.3s ease;
+}
+.fq-item.is-open {
+  background: var(--open);
+}
+
+.fq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px 24px 7px;
+  background: none;
+  border: 0;
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 400;
+  color: var(--ink);
+  cursor: pointer;
+}
+.fq-question:hover .fq-icon {
+  color: var(--gold);
+}
+.fq-icon {
+  flex-shrink: 0;
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  color: var(--brown);
+  transition: color 0.3s ease;
+}
+
+/* smooth open/close without knowing the height */
+.fq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.fq-item.is-open .fq-panel {
+  grid-template-rows: 1fr;
+}
+.fq-panel-inner {
+  overflow: hidden;
+}
+
+.fq-answer {
+  padding: 4px 142px 32px 7px;
+  text-align: justify;
+  font-size: 1.4rem;
+  line-height: 1.55;
+}
+.fq-answer strong {
+  font-weight: 600;
+}
+
+.fq-inline-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #c27a52;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.fq-inline-link:hover {
+  color: var(--brown);
+}
+
+/* ================= FOOTER ================= */
+.fq-footer {
+  background: var(--green);
+  padding: 44px 20px 36px;
+  text-align: center;
+}
+.fq-footer-mono {
+  margin-bottom: 12px !important;
+  font-size: 2rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+.fq-footer-text {
+  font-family: var(--sans);
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .fq-nav {
+    height: 64px;
+    padding: 0 20px;
+  }
+  .fq-nav-links {
+    display: none; /* swap for a hamburger menu if you need mobile nav */
+  }
+  .fq-hero-frame {
+    min-height: 220px;
+  }
+  .fq-answer {
+    padding-right: 28px;
+    font-size: 1.2rem;
+  }
+  .fq-question {
+    font-size: 1.3rem;
+  }
+}

@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500&family=Pinyon+Script&display=swap");
+
+.bridal-party {
+  --green: #223e33;
+  --pink: #f2e4de;
+  --pink-card: #f9f1ec;
+  --pink-line: #e5d3c3;
+  --sage: #d3dcc9;
+  --sage-card: #e9ebdd;
+  --sage-line: #d9d2b8;
+  --gold: #b08d57;
+  --brown: #7b5f2c;
+  --ink: #223a2e;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Inter", Arial, sans-serif;
+  --script: "Pinyon Script", "Great Vibes", cursive;
+  font-family: var(--serif);
+  color: var(--ink);
+}
+.bridal-party * {
+  box-sizing: border-box;
+}
+.bridal-party p {
+  margin: 0;
+}
+
+/* ================= NAV ================= */
+.bp-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 80px;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--green);
+}
+.bp-nav-logo {
+  color: var(--gold);
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+.bp-nav-links {
+  display: flex;
+  gap: 34px;
+}
+.bp-nav-links a {
+  padding-bottom: 4px;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: #f5f1e8;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease;
+}
+.bp-nav-links a:hover,
+.bp-nav-links a.is-active {
+  color: var(--gold);
+}
+.bp-nav-links a.is-active {
+  border-bottom-color: var(--gold);
+}
+
+/* ================= HERO ================= */
+.bp-hero {
+  padding: 16px 16px 16px;
+  background: var(--green);
+}
+.bp-hero-frame {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  border: 1px solid rgba(176, 141, 87, 0.5);
+  color: #f5f1e8;
+}
+.bp-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: #e5dccb;
+}
+.bp-hero-title {
+  margin: 26px 0 20px;
+  font-size: clamp(3rem, 6.5vw, 5.4rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+.bp-hero-title em {
+  font-weight: 300;
+  color: #ecd9d4;
+}
+.bp-hero-sub {
+  max-width: 440px;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+/* ================= SECTIONS ================= */
+.bp-section {
+  padding: 70px 24px 90px;
+}
+.bp-section--pink {
+  background: var(--pink);
+}
+.bp-section--sage {
+  background: var(--sage);
+}
+
+.bp-section-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bp-tick {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.bp-section-title {
+  margin: 26px 0 40px;
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  font-weight: 400;
+  color: var(--green);
+  text-align: center;
+}
+
+/* ---------- Featured (maid of honor / best man) ---------- */
+.bp-featured {
+  width: 100%;
+  max-width: 610px;
+  padding: 26px 20px 34px;
+  text-align: center;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+}
+
+.bp-role {
+  font-family: var(--sans);
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  color: var(--brown);
+}
+
+.bp-script {
+  margin-top: 12px !important;
+  font-family: var(--script);
+  font-size: 2.6rem;
+  line-height: 1.25;
+  color: var(--green);
+}
+.bp-script--lg {
+  font-size: clamp(3.2rem, 6vw, 4.6rem);
+  margin-top: 6px !important;
+}
+
+/* ---------- Grid of members ---------- */
+.bp-grid {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* centers the last orphan card */
+  gap: 20px;
+}
+
+.bp-card {
+  flex: 0 0 calc((100% - 40px) / 3);
+  min-height: 145px;
+  padding: 26px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid var(--pink-line);
+  background: var(--pink-card);
+}
+.bp-section--sage .bp-card {
+  background: var(--sage-card);
+  border-color: var(--sage-line);
+}
+.bp-card .bp-script {
+  font-size: 2.4rem;
+}
+
+/* ================= FOOTER ================= */
+.bp-footer {
+  background: var(--green);
+  padding: 50px 20px 40px;
+  text-align: center;
+}
+.bp-footer-mono {
+  margin-bottom: 12px !important;
+  font-size: 2.2rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+.bp-footer-text {
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .bp-nav {
+    height: 64px;
+    padding: 0 20px;
+  }
+  .bp-nav-links {
+    display: none; /* swap for a hamburger menu if you need mobile nav */
+  }
+  .bp-card {
+    flex: 0 0 calc((100% - 20px) / 2);
+  }
+}
+
+@media (max-width: 560px) {
+  .bp-hero-frame {
+    min-height: 300px;
+  }
+  .bp-card {
+    flex: 0 0 100%;
+  }
+  .bp-card .bp-script {
+    font-size: 2.2rem;
+  }
+}
