@@ -1,13 +1,20 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./tr.css";
-
+// import floral from "../../assets/floral-bg.jpg";
 /* ====== REPLACE THESE PATHS / LINKS (files go in /public) ====== */
-const HERO_VIDEO = "https://www.youtube.com/embed/G6HfTvY-U-Q?autoplay=1&mute=1&controls=0&loop=1&playlist=G6HfTvY-U-Q&playsinline=1&enablejsapi=1&rel=0";
+const HERO_VIDEO = "https://www.youtube.com/embed/G6HfTvY-U-Q?autoplay=1&mute=1&controls=0&start=20&playsinline=1&enablejsapi=1&rel=0";
 const HOTEL_IMG = "https://catherine-gilberto-wedding.catmora94.chatgpt.site/assets/hotel/courtyard.webp";
-const BOOKING_BG = "/images/floral-bg.jpg";
+const BOOKING_BG = "../../assets/floral-bg.jpg";
 const BOOKING_LINK = "https://www.clickclackhotel.com/en/bookcore/availability/clickclackmedellin/2027-08-29/2027-09-06/2/0/?cp=BODACATYJRSEPT2027MDE";
 const HOTEL_WEBSITE = "https://www.clickclackhotel.com/en/";
 const WEDDING_CODE = "BODACATYJRSEPT2027MDE";
+const FLIGHTS_BG = "/images/medellin-bg.jpg"; // watercolor Medellín background for the flights section
+const AVIANCA_LINK = "https://www.avianca.com/";
+const AMERICAN_LINK = "https://www.aa.com/";
+const FEEL_WEBSITE = "https://feeltourismexperiences.com/"; // TODO: Feel Tourism Experiences website
+const FEEL_INSTAGRAM = "https://www.instagram.com/feel_tourismexperiences/"; // TODO: Feel Tourism Experiences Instagram
+const START_AT = 20; // seconds skipped at the start (and on every loop) — keep in sync with &start= in HERO_VIDEO
+const REVEAL_DELAY = 2500; // ms the video stays hidden after loading (hides YouTube's centre icon)
 /* =============================================================== */
 
 const NAV_LINKS = [
@@ -95,10 +102,69 @@ const ROOMS = [
   },
 ];
 
+const FLIGHT_DAYS = [
+  "Tuesday · August 31, 2027",
+  "Wednesday · September 1, 2027",
+  "Thursday · September 2, 2027",
+];
+
+const FLIGHT_OPTIONS = [
+  {
+    airline: "Avianca",
+    route: "Miami (MIA) to Medellín (MDE) · Nonstop",
+    time: "6:40 a.m. – 9:00 a.m.",
+    duration: "3 hr 20 min · Departure and arrival in local time",
+    tone: "cream",
+  },
+  {
+    airline: "American Airlines",
+    route: "Miami (MIA) to Medellín (MDE) · Nonstop",
+    time: "10:20 a.m. – 12:48 p.m.",
+    duration: "3 hr 28 min · Departure and arrival in local time",
+    tone: "rose",
+  },
+];
+
 const Travel = () => {
   const iframeRef = useRef(null);
+  const timer = useRef(null);
   const [paused, setPaused] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  // Keep the video hidden for a few seconds after it loads so YouTube's
+  // centre play/pause icon never shows, then fade it in.
+  const send = (payload) =>
+    iframeRef.current?.contentWindow?.postMessage(JSON.stringify(payload), "*");
+
+  // No loop/playlist params (YouTube's loop would jump back to 0:00).
+  // When the video ends, jump back to START_AT and keep playing.
+  useEffect(() => {
+    const onMessage = (e) => {
+      if (!String(e.origin).includes("youtube.com")) return;
+      let data = e.data;
+      if (typeof data === "string") {
+        try {
+          data = JSON.parse(data);
+        } catch {
+          return;
+        }
+      }
+      if (data?.event === "onStateChange" && data.info === 0) {
+        send({ event: "command", func: "seekTo", args: [START_AT, true] });
+        send({ event: "command", func: "playVideo", args: [] });
+      }
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
+  const handleLoad = () => {
+    // subscribe to player events (needed to detect the video ending)
+    send({ event: "listening", id: 1, channel: "widget" });
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setReady(true), REVEAL_DELAY);
+  };
 
   const toggleVideo = () => {
     const win = iframeRef.current?.contentWindow;
@@ -138,6 +204,12 @@ const Travel = () => {
           title="Medellín hero video"
           allow="autoplay; encrypted-media"
           referrerPolicy="strict-origin-when-cross-origin"
+          onLoad={handleLoad}
+          style={{
+            opacity: ready ? 1 : 0,
+            transition: "opacity 1s ease",
+            pointerEvents: "none", // clicks never reach YouTube, so no centre icon
+          }}
         ></iframe>
         <div className="tr-hero-content">
           <p className="tr-eyebrow tr-eyebrow--gold">
@@ -192,7 +264,7 @@ const Travel = () => {
       {/* ---------- BOOKING ---------- */}
       <section
         className="tr-booking"
-        style={{ backgroundImage: `url(${BOOKING_BG})` }}
+      
       >
         <div className="tr-booking-line tr-booking-line--top"></div>
         <div className="tr-booking-inner">
@@ -246,6 +318,139 @@ const Travel = () => {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* ---------- FLIGHTS ---------- */}
+      <section
+        className="tr-flights"
+       
+      >
+        <div className="tr-flights-intro">
+          <h2 className="tr-flights-title">Flights to Medellín</h2>
+          <p className="tr-flights-text">
+            We recommend flying into José María Córdova International Airport
+            (MDE) in Rionegro, serving Medellín. For guests traveling from
+            Miami, we recommend checking <strong>Avianca</strong> and{" "}
+            <strong>American Airlines</strong> for nonstop flights.
+          </p>
+
+          <div className="tr-route">
+            <span className="tr-route-code">MIA</span>
+            <span className="tr-route-badge">NONSTOP</span>
+            <span className="tr-route-code">MDE</span>
+          </div>
+
+          <p className="tr-flights-text">
+            Here are a few arrival options for our wedding weekend. Choose the
+            day that works best for you! Please keep in mind that Medellín,
+            Colombia is one hour behind Miami.
+          </p>
+          <p className="tr-flights-note">
+            Flight departure and arrival times are shown in each airport’s
+            local time.
+          </p>
+        </div>
+
+        <div className="tr-flights-list">
+          {FLIGHT_DAYS.map((day) => (
+            <div className="tr-flight-day" key={day}>
+              <h3 className="tr-flight-date">{day}</h3>
+              <div className="tr-flight-row">
+                {FLIGHT_OPTIONS.map((f) => (
+                  <article
+                    className={`tr-flight-card tr-flight-card--${f.tone}`}
+                    key={f.airline}
+                  >
+                    <h4 className="tr-flight-airline">{f.airline}</h4>
+                    <p className="tr-flight-route">{f.route}</p>
+                    <p className="tr-flight-time">{f.time}</p>
+                    <p className="tr-flight-duration">{f.duration}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div className="tr-flight-row tr-flight-actions">
+            <div>
+              <a
+                href={AVIANCA_LINK}
+                className="tr-btn tr-btn--dark tr-btn--small"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Search Avianca
+              </a>
+            </div>
+            <div>
+              <a
+                href={AMERICAN_LINK}
+                className="tr-btn tr-btn--dark tr-btn--small"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Search American Airlines
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- GETTING TO THE HOTEL ---------- */}
+      <section className="tr-transport">
+        <h2 className="tr-transport-title">Getting to the hotel</h2>
+        <p className="tr-transport-intro">
+          Once you land at José María Córdova International Airport (MDE), you
+          can take an Uber to The Click Clack Hotel Medellín or book private
+          transportation in advance.
+        </p>
+
+        <div className="tr-transport-grid">
+          <article className="tr-transport-card">
+            <h3 className="tr-transport-name">Take an Uber</h3>
+            <p>
+              Prefer to arrange your ride when you arrive? You can request an
+              Uber from the airport to The Click Clack Hotel Medellín.
+            </p>
+            <p>
+              Enter <strong>The Click Clack Hotel Medellín</strong> as your
+              destination:
+              <br />
+              Cra. 37 #10A-29, El Poblado, Medellín.
+            </p>
+          </article>
+
+          <article className="tr-transport-card tr-transport-card--green">
+            <h3 className="tr-transport-name">Book a private transfer</h3>
+            <p>
+              If you’d like to have your airport ride arranged before you
+              arrive, we recommend <strong>Feel Tourism Experiences</strong>.
+              We’ve used them ourselves and had a great experience!
+            </p>
+            <p>
+              Contact their team directly ahead of your trip to arrange your
+              pickup and confirm availability and pricing.
+            </p>
+            <div className="tr-transport-actions">
+              <a
+                href={FEEL_WEBSITE}
+                className="tr-btn tr-btn--dark tr-btn--small"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Visit their website
+              </a>
+              <a
+                href={FEEL_INSTAGRAM}
+                className="tr-btn tr-btn--outline tr-btn--small"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View Instagram
+              </a>
+            </div>
+          </article>
         </div>
       </section>
 
