@@ -69,6 +69,11 @@
     #e4d8c0 75%,
     #d6c9b0 100%
   );
+
+  background-image: url("../../assets/flower.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 .rg-hero-frame {
   min-height: 570px;

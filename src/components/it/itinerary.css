@@ -353,8 +353,8 @@
 
 /* ================= FRIDAY IDEAS ================= */
 .it-lead {
-  max-width: 420px;
-  margin-bottom: 36px;
+  max-width: 720px!important;
+  margin-bottom: 56px;
   font-size: 1.05rem;
   line-height: 1.6;
 }
@@ -567,3 +567,19 @@
     padding-left: 14px;
   }
 }
+
+
+
+/* Append to the bottom of itinerary.css (place it ABOVE the @media block if you want
+   the wide card to stay full width on mobile — either order works). */
+
+/* Friday: wide "recommendations" card under the two idea cards */
+.it-idea--wide {
+  grid-column: 1 / -1;
+}
+.it-idea--outline {
+  background: transparent;
+  border: 1px solid rgba(27, 43, 36, 0.22);
+  border-top: 1px solid rgba(27, 43, 36, 0.22);
+}
+

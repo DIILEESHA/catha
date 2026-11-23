@@ -1,20 +1,19 @@
 import "./itinerary.css";
-// import cosa from "../../assets/van.png"
+import chiva from "../../assets/van.png";
+
 /* ====== REPLACE THESE PATHS / LINKS (files go in /public) ====== */
 const IMG = {
   hero: "https://catherine-gilberto-wedding.catmora94.chatgpt.site/assets/itinerary/catherine-gilberto-header.jpg",
   deriva: "https://catherine-gilberto-wedding.catmora94.chatgpt.site/assets/itinerary/la-deriva-welcome.png",
-  chiva: "../../assets/van.png",
+  chiva,
   vivareMain: "https://catherine-gilberto-wedding.catmora94.chatgpt.site/assets/itinerary/vivare-hero.webp",
   vivareA: "https://catherine-gilberto-wedding.catmora94.chatgpt.site/assets/itinerary/vivare-hall.webp",
   vivareB: "https://catherine-gilberto-wedding.catmora94.chatgpt.site/assets/itinerary/vivare-garden.webp",
 };
 const LINKS = {
   deriva: "https://www.clickclackhotel.com/en/hotel-clickclackmedellin-in-medellin/restaurants/drift/",
-  guatape: "https://colombia.travel/es/node/4314",
-  coffee: "https://www.medellin.travel/agrotourism/?lang=en",
-  comuna13: "https://www.medellin.travel/comuna-13-3/?lang=en",
-  arvi: "https://www.medellin.travel/medellin-arvi-park/?lang=en",
+  feelTours: "https://feeltourismexperiences.com/shop/",
+  feelGuide: "https://feeltourismexperiences.com/city-guide-medellin/",
   vivare: "https://eventosvivare.com/",
   ranchLocation: "https://share.google/o4aFcrJBrPECBDn69",
   ranchSite: "https://elrancherito.com.co/",
@@ -40,36 +39,20 @@ const DAYS = [
 
 const IDEAS = [
   {
-    eyebrow: "A COLORFUL DAY AWAY",
-    title: "Guatapé",
-    text: "A lakeside town known for its brightly painted streets and decorative panels called zócalos. Wander the town, take a boat ride on the reservoir, or climb nearby Piedra del Peñol for sweeping views of the water and green hills.",
-    link: "DISCOVER GUATAPÉ ↗",
-    href: LINKS.guatape,
+    eyebrow: "PLAN A DAY OUT",
+    title: "Book a tour",
+    text: "Find a tour for your free day with Feel Tourism Experiences and book directly with their team.",
+    link: "BROWSE TOURS",
+    href: LINKS.feelTours,
     tone: "cream",
   },
   {
-    eyebrow: "FROM BEAN TO CUP",
-    title: "A coffee day trip",
-    text: "Spend time at a coffee farm in the countryside around Medellín. Learn how coffee is grown, harvested, and processed, then enjoy a tasting and a fresh cup surrounded by greenery.",
-    link: "EXPLORE COFFEE EXPERIENCES ↗",
-    href: LINKS.coffee,
+    eyebrow: "EXPLORE AT YOUR OWN PACE",
+    title: "Discover Medellín",
+    text: "Use Feel Tourism Experiences’ city guide to find places to explore around Medellín.",
+    link: "EXPLORE THE CITY GUIDE",
+    href: LINKS.feelGuide,
     tone: "pink",
-  },
-  {
-    eyebrow: "GET TO KNOW THE CITY",
-    title: "A Medellín city tour",
-    text: "Choose a guided tour to discover Medellín's neighborhoods, local culture, and history. A visit to Comuna 13 offers a chance to learn about its transformation through art, community, and the stories of local guides.",
-    link: "LEARN ABOUT COMUNA 13 ↗",
-    href: LINKS.comuna13,
-    tone: "pink",
-  },
-  {
-    eyebrow: "A BREATH OF FRESH AIR",
-    title: "Parque Arví",
-    text: "Trade the city bustle for forest trails and mountain air in Santa Elena. Take the scenic Metrocable journey and explore this nature destination with a guided walk or a relaxed afternoon outdoors.",
-    link: "EXPLORE PARQUE ARVÍ ↗",
-    href: LINKS.arvi,
-    tone: "cream",
   },
 ];
 
@@ -87,7 +70,7 @@ const Itinerary = () => {
   return (
     <div className="itinerary">
       {/* ---------- NAV ---------- */}
-     
+
 
       {/* ---------- HERO ---------- */}
       <section className="it-hero">
@@ -97,9 +80,11 @@ const Itinerary = () => {
               SEPTEMBER 2–5, 2027 · MEDELLÍN, COLOMBIA
             </p>
             <h1 className="it-hero-title">
-              A little love.
+              A weekend to
               <br />
-              <em>A lot of celebrating.</em>
+              remember
+              <br />
+              <em>in Medellín.</em>
             </h1>
             <p className="it-hero-desc">
               Four days in Colombia with our favorite people. Here’s what we
@@ -125,7 +110,7 @@ const Itinerary = () => {
       <section id="day-02" className="it-day it-day--pink">
         <div className="it-wrap">
           <SectionHead num="02" date="THURSDAY · SEPTEMBER 2, 2027">
-            Let’s get <em>this started.</em>
+            Let’s get this started.
           </SectionHead>
 
           <div className="it-feature">
@@ -137,7 +122,7 @@ const Itinerary = () => {
               <h3 className="it-feature-title">
                 Welcome Party
                 <br />
-                <em>at La Deriva</em>
+                at La Deriva
               </h3>
               <p>
                 Flying in early? Come kick off the weekend with us at La
@@ -185,14 +170,15 @@ const Itinerary = () => {
       <section id="day-03" className="it-day it-day--sage">
         <div className="it-wrap">
           <SectionHead num="03" date="FRIDAY · SEPTEMBER 3, 2027">
-            Medellín, <em>your way.</em>
+            Medellín, your way.
           </SectionHead>
 
           <p className="it-lead">
-            No wedding plans today! Sleep in, explore the city, or head out on
-            a day trip. Here are a few ideas for your free day.
+            The day is yours! If you’d like to take a tour, you can book
+            through Feel Tourism Experiences. Prefer to explore at your own
+            pace? Browse their Medellín city guide for inspiration.
           </p>
-
+<br/>
           <div className="it-ideas">
             {IDEAS.map((i) => (
               <article key={i.title} className={`it-idea it-idea--${i.tone}`}>
@@ -204,13 +190,16 @@ const Itinerary = () => {
                 </a>
               </article>
             ))}
-          </div>
 
-          <p className="it-note">
-            These are ideas for your free day, not organized wedding
-            activities. Arrange tours and transportation independently, and
-            check current schedules and availability before heading out.
-          </p>
+            <article className="it-idea it-idea--outline it-idea--wide">
+              <p className="it-eyebrow it-eyebrow--muted">OUR FAVORITE SPOTS</p>
+              <h3>Cat &amp; Junior’s Medellín Recommendations</h3>
+              <p>
+                Coming soon! We’ll share the places we’ve loved during our
+                visits so you can try a few of our favorites while you’re here.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -218,7 +207,7 @@ const Itinerary = () => {
       <section id="day-04" className="it-day it-day--dark">
         <div className="it-wrap">
           <SectionHead num="04" date="SATURDAY · SEPTEMBER 4, 2027">
-            The day <em>we say “I do.”</em>
+            The day we say “I do.”
           </SectionHead>
 
           <div className="it-feature it-feature--wedding">
@@ -270,7 +259,7 @@ const Itinerary = () => {
       <section id="day-05" className="it-day it-day--cream">
         <div className="it-wrap">
           <SectionHead num="05" date="SUNDAY · SEPTEMBER 5, 2027">
-            Un último <em>cafecito.</em>
+            Un último cafecito.
           </SectionHead>
 
           <div className="it-feature it-feature--brunch">
@@ -295,7 +284,7 @@ const Itinerary = () => {
               <h3 className="it-feature-title">
                 Brunch at
                 <br />
-                <em>El Rancherito – Palmas</em>
+                El Rancherito – Palmas
               </h3>
               <p>
                 Still in town? Join us for one last cafecito and a relaxed
@@ -308,8 +297,8 @@ const Itinerary = () => {
                 before heading home.
               </p>
               <div className="it-callout">
-                A casual, optional meetup. Everyone will order and pay for
-                their own meal—join us if it works with your travel plans!
+                A casual, optional meetup—join us if it works with your travel
+                plans!
               </div>
               <p className="it-meta">
                 El Rancherito – Palmas

@@ -18,18 +18,22 @@ const TravelLink = ({ children = "Travel page" }) => (
 );
 
 const FAQS = [
-  {
+{
     q: "Are children welcome?",
-    // TODO: screenshot doesn't show this answer, replace with your own text
-    a: <>Replace this with your answer about children.</>,
+    a: (
+      <>
+        While we love your little ones, our wedding will be an adults-only
+        celebration.
+      </>
+    ),
   },
   {
     q: "What is the wedding dress code?",
     a: (
       <>
         Our wedding is <strong>black tie</strong>. We invite you to celebrate
-        with us in floor-length gowns and tuxedos. We can’t wait to see
-        everyone dressed up for such a special evening!
+        with us in floor-length gowns and tuxedos. We can’t wait to see everyone
+        dressed up for such a special evening!
       </>
     ),
   },
@@ -37,8 +41,8 @@ const FAQS = [
     q: "Are there any colors guests should avoid?",
     a: (
       <>
-        We kindly ask guests to avoid white, cream, and blush pink. Feel free
-        to wear other colors you love.
+        We kindly ask guests to avoid white, cream, and blush pink. Feel free to
+        wear other colors you love.
       </>
     ),
   },
@@ -67,11 +71,10 @@ const FAQS = [
     q: "Can I take photos during the ceremony?",
     a: (
       <>
-        We invite you to be fully present with us during our unplugged
-        ceremony. Please silence and put away your phones and cameras, and let
-        our photographers capture the moment. Once the ceremony is over, we’d
-        love for you to take photos and capture memories throughout the
-        celebration!
+        We invite you to be fully present with us during our unplugged ceremony.
+        Please silence and put away your phones and cameras, and let our
+        photographers capture the moment. Once the ceremony is over, we’d love
+        for you to take photos and capture memories throughout the celebration!
       </>
     ),
   },
@@ -83,9 +86,9 @@ const FAQS = [
         reserved a room block and arranged a special discount code at The Click
         Clack Hotel for our guests. Visit our <TravelLink /> for the booking
         link, discount code, and room options. If you choose another hotel or
-        rental, we recommend staying in the El Poblado area. Please keep in
-        mind that event transportation will pick up and drop off at The Click
-        Clack Hotel.
+        rental, we recommend staying in the El Poblado area. Please keep in mind
+        that event transportation will pick up and drop off at The Click Clack
+        Hotel.
       </>
     ),
   },
@@ -115,6 +118,8 @@ const FAQS = [
       </>
     ),
   },
+
+  
 ];
 
 const Faqs = () => {
@@ -126,7 +131,6 @@ const Faqs = () => {
   return (
     <div className="faqs">
       {/* ---------- NAV ---------- */}
-    
 
       {/* ---------- HERO ---------- */}
       <section className="fq-hero">

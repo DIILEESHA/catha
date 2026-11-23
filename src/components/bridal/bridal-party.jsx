@@ -76,7 +76,7 @@ const BridalParty = () => {
         <div className="bp-hero-frame">
           <p className="bp-eyebrow">BY OUR SIDE</p>
           <h1 className="bp-hero-title">
-            Our <em>Bridal Party</em>
+            Our <>Bridal Party</>
           </h1>
           <p className="bp-hero-sub">
             The people who make every chapter a little more special.
