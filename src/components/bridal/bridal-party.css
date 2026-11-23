@@ -216,7 +216,6 @@
   color: var(--gold);
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
   .bp-nav {
     height: 64px;
