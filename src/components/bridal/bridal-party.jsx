@@ -18,10 +18,10 @@ const BRIDESMAIDS = {
   role: "BRIDESMAID",
   members: [
     "Maria Zuniga",
+    "Chastity Delgado",
     "Vallerie Bello",
     "Jessica Otalora",
     "Adriana Molina",
-    "Chastity Delgado",
     "Jessica Llanes",
   ],
 };
